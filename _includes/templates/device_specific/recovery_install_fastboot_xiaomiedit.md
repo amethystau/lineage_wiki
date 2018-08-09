@@ -27,13 +27,16 @@ fastboot devices
 ```
     {% include tip.html content="If you see `no permissions fastboot` while on Linux or macOS, try running `fastboot` as root." %}
 5. Flash recovery onto your device:
+    * If your device is using MIUI V9.5.17.0 or MIUI Beta V8.7.5 and below you may use this to flash recovery.
 ```
-Depending on what MIUI firmware version you currently have on your device you may need to live boot into your recovery rom first and then flash it.
-Currently all versions above MIUI V9.5.17.0 and Beta V8.7.5 have "Anti-Rollback". 
 fastboot flash recovery twrp-x.x.x-x-{{ twrp_codename }}.img
 ```
-    {% include tip.html content="If your device is currently" %}
-	{% include tip.html content="The file may not be named identically to what stands in this command, so adjust accordingly." %}
+      Otherwise to circumvent the new anti-rollback feature included in firmwares above MIUI V9.5.17.0 or MIUI Beta V8.7.5 you must first use this
+```
+fastboot boot twrp-x.x.x-x-{{ twrp_codename }}.img
+```
+      Now once you have booted into recovery copy your recovery image to your phone then select "Install", now select "Install image" and now navigate to the directory where you saved your recovery image, open it and select your Recovery partion and swipe to flash. 
+    {% include tip.html content="The file may not be named identically to what stands in this command, so adjust accordingly." %}
 
 6. Now reboot into recovery to verify the installation:
     * {{ site.data.devices[page.device].recovery_boot }}
