@@ -5,4 +5,4 @@ folder: install
 permalink: /devices/whyred/install
 device: whyred
 ---
-{% include templates/device_install.md %}
+{% templates/device_specific/device_install_xiaomi.md %}
