@@ -37,6 +37,7 @@ fastboot boot twrp-x.x.x-x-{{ twrp_codename }}.img
 ```
       Now once you have booted into recovery copy your recovery image to your phone then select "Install", now select "Install image" and now navigate to the directory where you saved your recovery image, open it and select your Recovery partion and swipe to flash. 
     {% include tip.html content="The file may not be named identically to what stands in this command, so adjust accordingly." %}
-
+    {% include tip.html content="If your unsure whether or not your device has the new anti-rollback feature you can run `fastboot getvar anti`, if it comes back with 3 your fine but it comes back 4 your device has it installed." %}
+    {% include warning.html content="With this new feature rolling back to an older firmware of which you currently have installed will **BRICK** your device. Do **NOT** try to rollback to an earlier firmware" %}
 6. Now reboot into recovery to verify the installation:
     * {{ site.data.devices[page.device].recovery_boot }}
